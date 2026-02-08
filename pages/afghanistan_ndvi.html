@@ -27,7 +27,7 @@
 
   <script src="/assets/nav.js"></script>
   <script>
-    const CSV_URL = "/data/afghanistan/afghanistan_ndvi_monthly_district_mod13a3_gaul2024_v2.csv";
+    const CSV_URL = "/data/afghanistan/afghanistan_ndvi_monthly_district_mod13a3_gaul2024.csv";
 
     function parseCSV(text) {
       const lines = text.trim().split(/\r?\n/);
@@ -108,7 +108,6 @@
           },
           options: {
             responsive: true,
-            parsing: false,
             scales: {
               y: {
                 title: { display: true, text: "NDVI" }
