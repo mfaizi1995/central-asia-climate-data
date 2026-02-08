@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Afghanistan NDVI — Central Asia Climate Data</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Afghanistan NDVI (Monthly, District)</h1>
+
+    <p>
+      Source: MODIS MOD13A3 (V6.1). QA mask: SummaryQA 0–1. Boundaries: GAUL 2024.
+    </p>
+
+    <label for="districtSelect"><strong>Select a district:</strong></label>
+    <select id="districtSelect"></select>
+
+    <div style="margin-top: 16px;">
+      <canvas id="ndviChart" height="120"></canvas>
+    </div>
+
+    <p id="meta" style="margin-top:12px;"></p>
+  </main>
+
+  <script src="/assets/nav.js"></script>
+  <script>
+    const CSV_URL = "/data/afghanistan/afghanistan_ndvi_monthly_district_mod13a3_gaul2024_v2.csv";
+
+    function parseCSV(text) {
+      const lines = text.trim().split(/\r?\n/);
+      const header = lines[0].split(",");
+      const rows = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        const cols = lines[i].split(",");
+        const obj = {};
+        header.forEach((h, idx) => obj[h] = cols[idx]);
+        rows.push(obj);
+      }
+      return rows;
+    }
+
+    function unique(arr) {
+      return [...new Set(arr)];
+    }
+
+    async function main() {
+      const res = await fetch(CSV_URL);
+      if (!res.ok) {
+        document.getElementById("meta").textContent =
+          "Could not load CSV. Check the file path and name.";
+        return;
+      }
+
+      const text = await res.text();
+      const data = parseCSV(text);
+
+      // Expect columns like: date, district, province, ndvi_mean (or ndvi), ndvi_mean etc.
+      // We'll prefer ndvi_mean if it exists, otherwise ndvi.
+      const ndviField = data[0].ndvi_mean !== undefined ? "ndvi_mean" : "ndvi";
+
+      // Build district list
+      const districts = unique(data.map(d => d.district)).sort((a,b)=>a.localeCompare(b));
+      const select = document.getElementById("districtSelect");
+
+      districts.forEach(name => {
+        const opt = document.createElement("option");
+        opt.value = name;
+        opt.textContent = name;
+        select.appendChild(opt);
+      });
+
+      const ctx = document.getElementById("ndviChart").getContext("2d");
+      let chart;
+
+      function update(districtName) {
+        const subset = data
+          .filter(d => d.district === districtName)
+          .sort((a,b) => (a.date || "").localeCompare(b.date || ""));
+
+        const labels = subset.map(d => d.date);
+        const values = subset.map(d => {
+          const v = d[ndviField];
+          return v === "" || v === undefined ? null : Number(v);
+        });
+
+        // province (take first non-empty)
+        const province = subset.find(d => d.province)?.province || "";
+
+        document.getElementById("meta").textContent =
+          province ? `Province: ${province} | Points: ${values.filter(v => v !== null).length}` :
+                     `Points: ${values.filter(v => v !== null).length}`;
+
+        if (chart) chart.destroy();
+
+        chart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels,
+            datasets: [{
+              label: `NDVI (${districtName})`,
+              data: values,
+              spanGaps: true
+            }]
+          },
+          options: {
+            responsive: true,
+            parsing: false,
+            scales: {
+              y: {
+                title: { display: true, text: "NDVI" }
+              },
+              x: {
+                title: { display: true, text: "Month" },
+                ticks: { maxTicksLimit: 12 }
+              }
+            }
+          }
+        });
+      }
+
+      select.addEventListener("change", (e) => update(e.target.value));
+
+      // Default to first district
+      update(districts[0]);
+    }
+
+    main();
+  </script>
+</body>
+</html>
