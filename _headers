@@ -1,0 +1,8 @@
+# Force CSV files to download instead of displaying in browser
+/data/*.csv
+  Content-Type: text/csv
+  Content-Disposition: attachment
+
+/data/**/*.csv
+  Content-Type: text/csv
+  Content-Disposition: attachment
