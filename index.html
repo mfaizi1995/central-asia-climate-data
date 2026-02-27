@@ -4,30 +4,112 @@
   <meta charset="UTF-8" />
   <title>Central Asia Climate Data</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A public portal for satellite-derived climate indicators across Afghanistan and Central Asia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
-  <main class="container">
-    <h1>Central Asia Climate Data</h1>
-    <p>
-      A public portal for satellite-derived climate indicators across Afghanistan and Central Asia.
-    </p>
+  <main class="page">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero__title">Central Asia Climate Data</h1>
+        <p class="hero__subtitle">
+          A public portal for satellite-derived climate indicators across Afghanistan and Central Asia. 
+          Open data for researchers, policymakers, and humanitarian organizations.
+        </p>
+        <div class="hero__actions">
+          <a href="/pages/data.html" class="btn btn--primary btn--lg">Browse Datasets</a>
+          <a href="/pages/methods.html" class="btn btn--secondary btn--lg">View Methods</a>
+        </div>
+      </div>
+    </section>
 
-    <h2>Start here</h2>
-    <ul>
-      <li><a href="/pages/data.html">Browse datasets</a></li>
-      <li><a href="/pages/methods.html">Methods & sources</a></li>
-      <li><a href="/pages/about.html">About this project</a></li>
-    </ul>
+    <!-- Features Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-header__title">What's Available</h2>
+          <p class="section-header__subtitle" style="margin: 0 auto;">
+            Explore satellite-derived climate indicators processed for easy access and analysis.
+          </p>
+        </div>
 
-    <h2>Coming soon</h2>
-    <ul>
-      <li>Afghanistan — Land Surface Temperature (monthly)</li>
-      <li>Afghanistan — Vegetation condition (NDVI/VCI)</li>
-      <li>Afghanistan — Precipitation & SPI</li>
-    </ul>
+        <div class="grid grid--3">
+          <div class="card">
+            <div class="card__header">
+              <div class="card__icon card__icon--green">🌿</div>
+            </div>
+            <h3 class="card__title">Vegetation Health</h3>
+            <p class="card__body">
+              NDVI and vegetation condition indices from MODIS, tracking agricultural and rangeland health at district level.
+            </p>
+            <span class="badge badge--available">Available</span>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <div class="card__icon">🌡️</div>
+            </div>
+            <h3 class="card__title">Temperature</h3>
+            <p class="card__body">
+              Land Surface Temperature from MODIS satellites, providing monthly temperature patterns across the region.
+            </p>
+            <span class="badge badge--planned">Coming Soon</span>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <div class="card__icon">💧</div>
+            </div>
+            <h3 class="card__title">Precipitation</h3>
+            <p class="card__body">
+              Rainfall data from CHIRPS and drought indicators (SPI) for monitoring water availability and drought conditions.
+            </p>
+            <span class="badge badge--planned">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coverage Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title">Geographic Coverage</h2>
+          <p class="section-header__subtitle">
+            Starting with Afghanistan, with planned expansion across Central Asia.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <div class="card">
+            <h3 class="card__title">Afghanistan</h3>
+            <p class="card__body">
+              District-level climate indicators covering all 34 provinces. Data updated monthly with historical records back to 2000.
+            </p>
+            <div class="card__footer">
+              <a href="/pages/data.html" class="btn btn--outline btn--sm">View Datasets</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="card__title">Central Asia</h3>
+            <p class="card__body">
+              Planned expansion to Tajikistan, Uzbekistan, Kyrgyzstan, Turkmenistan, and Kazakhstan with consistent indicators.
+            </p>
+            <div class="card__footer">
+              <span class="badge badge--planned">Planned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="/assets/nav.js"></script>
 </body>
 </html>
+

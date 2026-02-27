@@ -4,22 +4,109 @@
   <meta charset="UTF-8" />
   <title>About — Central Asia Climate Data</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="About the Central Asia Climate Data project - mission, goals, and contact information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
-  <main class="container">
-    <h1>About</h1>
-    <p>
-      Central Asia Climate Data is a public portal aimed at making climate indicators easier to find, cite,
-      and use — starting with Afghanistan.
-    </p>
+  <main class="page">
+    <div class="container container--narrow">
+      <!-- Page Header -->
+      <header class="page-header">
+        <h1 class="page-header__title">About</h1>
+        <p class="page-header__description">
+          Central Asia Climate Data is a public portal aimed at making climate indicators easier to find, 
+          cite, and use — starting with Afghanistan.
+        </p>
+      </header>
 
-    <h2>Contact</h2>
-    <p>
-      Add your email or a contact form here later.
-    </p>
+      <!-- Mission Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-header__title">Our Mission</h2>
+        </div>
+
+        <div class="card">
+          <p class="card__body">
+            We believe climate data should be accessible to everyone. Our mission is to process, standardize, 
+            and distribute satellite-derived climate indicators for Central Asia, making it easier for 
+            researchers, policymakers, NGOs, and local organizations to understand and respond to climate 
+            challenges in the region.
+          </p>
+          <p class="card__body" style="margin: 0;">
+            All data is free to use, with clear documentation of sources and methods. We prioritize 
+            transparency, reproducibility, and ease of use.
+          </p>
+        </div>
+      </section>
+
+      <!-- Goals Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-header__title">Project Goals</h2>
+        </div>
+
+        <div class="grid" style="gap: var(--space-4);">
+          <div class="card">
+            <h3 class="card__title">Accessibility</h3>
+            <p class="card__body" style="margin: 0;">
+              Provide ready-to-use climate data in simple formats (CSV) that don't require specialized 
+              GIS software or programming skills.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3 class="card__title">Consistency</h3>
+            <p class="card__body" style="margin: 0;">
+              Use standardized processing methods and administrative boundaries across all countries 
+              and indicators for cross-border analysis.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3 class="card__title">Transparency</h3>
+            <p class="card__body" style="margin: 0;">
+              Document all data sources, quality filters, and processing steps so users can understand 
+              and trust the data they're using.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-header__title">Contact</h2>
+        </div>
+
+        <div class="card">
+          <p class="card__body">
+            Have questions, suggestions, or want to collaborate? We'd love to hear from you.
+          </p>
+          <p class="card__body" style="margin: 0; color: var(--color-text-muted);">
+            Contact form or email address coming soon.
+          </p>
+        </div>
+      </section>
+
+      <!-- Citation Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-header__title">How to Cite</h2>
+        </div>
+
+        <div class="card" style="background: var(--color-border-light);">
+          <p class="card__body" style="margin: 0; font-family: var(--font-mono); font-size: var(--font-size-sm);">
+            Central Asia Climate Data. (2026). [Dataset name]. Retrieved from https://[your-domain].com
+          </p>
+        </div>
+      </section>
+    </div>
   </main>
 
   <script src="/assets/nav.js"></script>
 </body>
 </html>
+

@@ -4,30 +4,122 @@
   <meta charset="UTF-8" />
   <title>Methods & Sources — Central Asia Climate Data</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Documentation of data sources, processing methods, and technical details for Central Asia Climate Data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
-  <main class="container">
-    <h1>Methods & Sources</h1>
-    <p>
-      This portal provides derived climate indicators computed from public satellite and reanalysis datasets.
-      Each dataset page will include its exact source, processing steps, and limitations.
-    </p>
+  <main class="page">
+    <div class="container container--narrow">
+      <!-- Page Header -->
+      <header class="page-header">
+        <h1 class="page-header__title">Methods & Sources</h1>
+        <p class="page-header__description">
+          This portal provides derived climate indicators computed from public satellite and reanalysis datasets. 
+          Each dataset page includes its exact source, processing steps, and limitations.
+        </p>
+      </header>
 
-    <h2>Planned data sources</h2>
-    <ul>
-      <li>NASA MODIS (e.g., LST, NDVI)</li>
-      <li>CHIRPS precipitation</li>
-      <li>ERA5 reanalysis (optional later)</li>
-    </ul>
+      <!-- Data Sources Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-header__title">Data Sources</h2>
+        </div>
 
-    <h2>Disclaimer</h2>
-    <p>
-      The original data remain the property of their respective providers.
-      This site publishes derived summaries and indicators, not raw archives.
-    </p>
+        <div class="grid" style="gap: var(--space-4);">
+          <div class="card">
+            <div class="card__header">
+              <div>
+                <h3 class="card__title">NASA MODIS</h3>
+                <p class="card__subtitle">Moderate Resolution Imaging Spectroradiometer</p>
+              </div>
+            </div>
+            <p class="card__body">
+              Land Surface Temperature (LST), Normalized Difference Vegetation Index (NDVI), 
+              and Vegetation Condition Index (VCI) from Terra and Aqua satellites.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <div>
+                <h3 class="card__title">CHIRPS</h3>
+                <p class="card__subtitle">Climate Hazards Infrared Precipitation with Stations</p>
+              </div>
+            </div>
+            <p class="card__body">
+              High-resolution gridded precipitation estimates combining satellite imagery with 
+              in-situ station data for rainfall and drought monitoring.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <div>
+                <h3 class="card__title">ERA5</h3>
+                <p class="card__subtitle">ECMWF Reanalysis (Optional)</p>
+              </div>
+            </div>
+            <p class="card__body">
+              Fifth generation atmospheric reanalysis providing comprehensive climate variables 
+              for validation and gap-filling where needed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Processing Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-header__title">Processing Methods</h2>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">General Workflow</h3>
+          <ul style="margin-top: var(--space-4);">
+            <li>Download source data from NASA EARTHDATA, CHIRPS, or Copernicus CDS</li>
+            <li>Apply quality assurance filters based on provider-recommended QA flags</li>
+            <li>Aggregate to administrative boundaries using GAUL 2024 district polygons</li>
+            <li>Compute zonal statistics (mean, min, max, pixel count)</li>
+            <li>Export to CSV format with standardized column names</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Boundaries Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-header__title">Administrative Boundaries</h2>
+        </div>
+
+        <div class="card">
+          <p class="card__body" style="margin: 0;">
+            All district-level aggregations use the Global Administrative Unit Layers (GAUL) 2024 edition 
+            maintained by FAO. This ensures consistency across all indicators and enables cross-dataset comparisons.
+          </p>
+        </div>
+      </section>
+
+      <!-- Disclaimer Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-header__title">Disclaimer</h2>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-accent-3);">
+          <p class="card__body" style="margin: 0;">
+            The original data remain the property of their respective providers (NASA, UCSB, ECMWF). 
+            This site publishes derived summaries and indicators, not raw archives. Users should cite 
+            both this portal and the original data sources in any publications or reports.
+          </p>
+        </div>
+      </section>
+    </div>
   </main>
 
   <script src="/assets/nav.js"></script>
 </body>
 </html>
+
